@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SCOWL — Are We All Angels (clon)</title>
+  <title>GARZI</title>
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Archivo+Black&family=Righteous&family=Space+Grotesk:wght@400;600;700&family=Bebas+Neue:wght@400&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -47,7 +47,7 @@
       left:0;
       right:0;
       bottom:0;
-      background:linear-gradient(transparent 0%, rgba(244, 232, 224, 0.3) 70%, rgba(244, 232, 224, 0.9) 100%);
+      background:linear-gradient(transparent 0%, transparent 40%, rgba(244, 232, 224, 0.1) 60%, rgba(244, 232, 224, 0.4) 80%, rgba(244, 232, 224, 0.8) 95%, #F4E8E0 100%);
       z-index:1;
     }
     .hero-content{
@@ -93,8 +93,9 @@
     }
     .merch{
       position:relative;
-      padding:40px 20px;
+      padding:20px 20px 40px 20px;
       background:#F4E8E0;
+      margin-top:-2px;
     }
     .merch h2{
       text-align:center;
@@ -111,56 +112,44 @@
     .merch-grid{
       display:flex;
       justify-content:center;
-      gap:40px;
+      gap:60px;
       flex-wrap:wrap;
       max-width:1000px;
       margin:0 auto;
+      padding:20px 0;
     }
     .merch-item{
-      background:var(--pure-white);
-      border-radius:12px;
-      padding:20px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      background:transparent;
+      border-radius:0;
+      padding:0;
+      box-shadow:none;
       transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       cursor:pointer;
       max-width:280px;
       text-align:center;
       position:relative;
-      overflow:hidden;
+      overflow:visible;
     }
     .merch-item:hover{
-      transform:scale(1.08) translateY(-10px);
-      box-shadow:0 20px 40px rgba(0,0,0,0.2);
-    }
-    .merch-item::before{
-      content:'';
-      position:absolute;
-      top:0;
-      left:-100%;
-      width:100%;
-      height:100%;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition:left 0.5s;
-    }
-    .merch-item:hover::before{
-      left:100%;
+      transform:scale(1.05) translateY(-5px);
+      box-shadow:none;
     }
     .merch-image{
       width:100%;
       height:250px;
-      border-radius:8px;
+      border-radius:0;
       margin-bottom:15px;
       display:flex;
       align-items:center;
       justify-content:center;
       transition:transform 0.3s ease;
       overflow:hidden;
-      background:var(--pure-white);
+      background:#F4E8E0;
     }
     .merch-image img{
       width:100%;
       height:100%;
-      object-fit:cover;
+      object-fit:contain;
       transition:transform 0.3s ease;
     }
     .merch-item:hover .merch-image{
@@ -183,7 +172,7 @@
       color:var(--blue);
       font-weight:bold;
     }
-    .tour{padding:40px 20px;max-width:900px;margin:auto;background:var(--pale-cream);}
+    .tour{padding:20px 20px 40px 20px;max-width:900px;margin:auto;background:var(--pale-cream);margin-top:-10px;}
     .tour h2{text-align:center;font-family:"Bebas Neue", "Arial Black", sans-serif;font-size:2.5rem;margin-bottom:30px;letter-spacing:4px;color:var(--blue);font-style:italic;transform:skew(-3deg);font-weight:900;}
     .tour-list{display:flex;flex-direction:column;gap:20px;}
     .tour-item{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid var(--cool-gray);}
@@ -313,21 +302,21 @@
     <div class="merch-grid">
       <div class="merch-item" onclick="window.open('#', '_blank')">
         <div class="merch-image">
-          <img src="blackshirt.jpeg" alt="Horned Deer Unisex T-Shirt">
+          <img src="blackshirt.png" alt="Black Garzi T-Shirt">
         </div>
-        <div class="merch-title">HORNED DEER UNISEX T-SHIRT</div>
+        <div class="merch-title">BLACK GARZI TSHIRT</div>
         <div class="merch-price">$40.00 USD</div>
       </div>
       <div class="merch-item" onclick="window.open('#', '_blank')">
         <div class="merch-image">
-          <img src="blackshirt.jpeg" alt="The Wall T-Shirt">
+          <img src="blackshirt.png" alt="The Wall T-Shirt">
         </div>
         <div class="merch-title">THE WALL T-SHIRT</div>
         <div class="merch-price">$35.00 USD</div>
       </div>
       <div class="merch-item" onclick="window.open('#', '_blank')">
         <div class="merch-image">
-          <img src="blackshirt.jpeg" alt="Garzi Logo Tee">
+          <img src="blackshirt.png" alt="Garzi Logo Tee">
         </div>
         <div class="merch-title">GARZI LOGO TEE</div>
         <div class="merch-price">$30.00 USD</div>
