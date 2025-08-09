@@ -96,6 +96,17 @@
       padding:20px 20px 40px 20px;
       background:#F4E8E0;
       margin-top:-2px;
+      z-index:1;
+    }
+    .merch::after{
+      content:'';
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      height:40px;
+      background:linear-gradient(transparent 0%, rgba(244, 232, 224, 0.3) 30%, rgba(244, 232, 224, 0.7) 70%, #F4E8E0 100%);
+      z-index:1;
     }
     .merch h2{
       text-align:center;
@@ -172,9 +183,85 @@
       color:var(--blue);
       font-weight:bold;
     }
-    .tour{padding:20px 20px 40px 20px;max-width:900px;margin:auto;background:var(--pale-cream);margin-top:-10px;}
+    .videos{
+      padding:20px 20px 40px 20px;
+      background:#F4E8E0;
+      margin-top:-40px;
+      position:relative;
+      z-index:1;
+    }
+    .videos::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:20px;
+      background:linear-gradient(rgba(244, 232, 224, 0.7) 0%, #F4E8E0 100%);
+      z-index:1;
+    }
+    .videos::after{
+      content:'';
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      height:40px;
+      background:linear-gradient(transparent 0%, rgba(244, 232, 224, 0.3) 30%, rgba(244, 232, 224, 0.7) 70%, #F4E8E0 100%);
+      z-index:1;
+    }
+    .videos h2{
+      text-align:center;
+      font-family:"Bebas Neue", "Arial Black", sans-serif;
+      font-size:2.5rem;
+      margin-bottom:30px;
+      letter-spacing:4px;
+      color:var(--blue);
+      font-style:italic;
+      transform:skew(-3deg);
+      font-weight:900;
+    }
+    .videos-grid{
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      flex-wrap:wrap;
+      max-width:1200px;
+      margin:0 auto;
+      padding:20px 0;
+    }
+    .video-item{
+      background:transparent;
+      border-radius:8px;
+      overflow:hidden;
+      transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor:pointer;
+      max-width:350px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+    .video-item:hover{
+      transform:translateY(-5px);
+      box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    }
+    .video-iframe{
+      width:100%;
+      height:200px;
+      border:none;
+      border-radius:8px;
+    }
+    .tour{padding:20px 20px 40px 20px;background:#F4E8E0;margin-top:-40px;position:relative;z-index:1;}
+    .tour::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:20px;
+      background:linear-gradient(rgba(244, 232, 224, 0.7) 0%, #F4E8E0 100%);
+      z-index:1;
+    }
+    .tour-list{display:flex;flex-direction:column;gap:20px;max-width:900px;margin:0 auto;}
     .tour h2{text-align:center;font-family:"Bebas Neue", "Arial Black", sans-serif;font-size:2.5rem;margin-bottom:30px;letter-spacing:4px;color:var(--blue);font-style:italic;transform:skew(-3deg);font-weight:900;}
-    .tour-list{display:flex;flex-direction:column;gap:20px;}
     .tour-item{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid var(--cool-gray);}
     .tour-date{min-width:140px;font-weight:bold;text-transform:uppercase;font-size:0.9rem;color:var(--deep-blue);}
     .tour-info{flex:1;min-width:200px;}
@@ -200,7 +287,7 @@
       width:100%;
       height:100%;
       pointer-events:none;
-      z-index:0;
+      z-index:5;
       overflow:hidden;
     }
     .bird-logo{
@@ -238,9 +325,115 @@
     .bird-18{width:30px;height:30px;left:80%;animation-delay:-13s;}
     .bird-19{width:45px;height:45px;left:90%;animation-delay:-16s;}
     .bird-20{width:35px;height:35px;left:12%;animation-delay:-19s;}
+    
+    /* Popup Modal Styles */
+    .popup-overlay{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.8);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      z-index:1000;
+      opacity:0;
+      visibility:hidden;
+      transition:all 0.3s ease;
+    }
+    .popup-overlay.show{
+      opacity:1;
+      visibility:visible;
+    }
+    .popup-content{
+      background:#F4E8E0;
+      padding:40px;
+      border-radius:8px;
+      text-align:center;
+      max-width:500px;
+      width:90%;
+      position:relative;
+      transform:translateY(-50px);
+      transition:transform 0.3s ease;
+    }
+    .popup-overlay.show .popup-content{
+      transform:translateY(0);
+    }
+    .popup-close{
+      position:absolute;
+      top:15px;
+      right:20px;
+      background:none;
+      border:none;
+      font-size:24px;
+      cursor:pointer;
+      color:var(--deep-blue);
+      font-weight:bold;
+    }
+    .popup-title{
+      font-family:"Bebas Neue", "Arial Black", sans-serif;
+      font-size:2.5rem;
+      color:var(--deep-blue);
+      margin-bottom:20px;
+      letter-spacing:4px;
+      font-style:italic;
+      transform:skew(-3deg);
+      font-weight:900;
+    }
+    .popup-text{
+      font-size:1.1rem;
+      color:var(--soft-black);
+      margin-bottom:25px;
+      line-height:1.6;
+    }
+    .popup-form{
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+    }
+    .popup-input{
+      padding:12px;
+      border:2px solid var(--blue);
+      background:var(--pure-white);
+      color:var(--soft-black);
+      font-size:1rem;
+      border-radius:4px;
+    }
+    .popup-button{
+      background:var(--blue);
+      color:var(--pure-white);
+      padding:15px 30px;
+      border:none;
+      border-radius:4px;
+      font-weight:bold;
+      letter-spacing:2px;
+      font-size:1rem;
+      cursor:pointer;
+      transition:all 0.3s ease;
+    }
+    .popup-button:hover{
+      background:var(--deep-blue);
+      transform:translateY(-2px);
+    }
   </style>
 </head>
 <body>
+  <!-- Popup Modal -->
+  <div class="popup-overlay" id="signupPopup">
+    <div class="popup-content">
+      <button class="popup-close" onclick="closePopup()">&times;</button>
+      <img src="garzi.png" alt="GARZI logo" style="height:45px; display:block; margin:0 auto 20px auto;">
+      <h2 class="popup-title">JOIN THE MOVEMENT</h2>
+      <p class="popup-text">Be the first to know about new releases, exclusive content, and tour dates.</p>
+      <form class="popup-form" onsubmit="submitPopupForm(event)">
+        <input type="text" class="popup-input" placeholder="Enter your name" required>
+        <input type="email" class="popup-input" placeholder="Enter your email" required>
+        <button type="submit" class="popup-button">JOIN NOW</button>
+      </form>
+    </div>
+  </div>
+
   <div class="floating-birds">
     <div class="bird-logo bird-1"><img src="garzi-bird.png" alt=""></div>
     <div class="bird-logo bird-2"><img src="garzi-bird.png" alt=""></div>
@@ -271,14 +464,17 @@
           <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
         </svg>
       </a>
-      <a href="https://www.bandsintown.com/a/15525163-garzi" target="_blank" title="Bandsintown">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
+      <a href="https://www.bandsinstown.com/a/15525163-garzi" target="_blank" title="Bandsintown">
+        <img src="bandsintown.png" alt="Bandsintown" style="width:16px; height:16px;">
       </a>
       <a href="https://www.instagram.com/garzi/" target="_blank" title="Instagram">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+      <a href="https://www.youtube.com/@garzi2957" target="_blank" title="YouTube">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
         </svg>
       </a>
       <a href="#" target="_blank" title="Merch Store" class="merch-link">
@@ -292,8 +488,8 @@
   <section class="hero">
     <div class="hero-content">
       <h2>THE WALL</h2>
-      <p>GARZI NEW EP</p>
-      <a href="#">STREAM NOW</a>
+      <p>NEW EP OUT 10/3</p>
+      <a href="#">PRE SAVE NOW</a>
     </div>
   </section>
 
@@ -320,6 +516,21 @@
         </div>
         <div class="merch-title">GARZI LOGO TEE</div>
         <div class="merch-price">$30.00 USD</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="videos">
+    <h2>Videos</h2>
+    <div class="videos-grid">
+      <div class="video-item">
+        <iframe class="video-iframe" src="https://www.youtube.com/embed/cw7hHjSvKU8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-item">
+        <iframe class="video-iframe" src="https://www.youtube.com/embed/SrMNciNXfOw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-item">
+        <iframe class="video-iframe" src="https://www.youtube.com/embed/wdBH3XCa6ec" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -354,13 +565,16 @@
           </svg>
         </a>
         <a href="https://www.bandsintown.com/a/15525163-garzi" target="_blank" title="Bandsintown">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
+          <img src="bandswhite.png" alt="Bandsintown" style="width:16px; height:16px;">
         </a>
         <a href="https://www.instagram.com/garzi/" target="_blank" title="Instagram">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@garzi2957" target="_blank" title="YouTube">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
         </a>
         <a href="#" target="_blank" title="Merch Store" class="merch-link">
@@ -371,5 +585,43 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Show popup when page loads
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('signupPopup').classList.add('show');
+      }, 1000); // Show popup after 1 second
+    });
+
+    // Close popup function
+    function closePopup() {
+      document.getElementById('signupPopup').classList.remove('show');
+      localStorage.setItem('popupShown', 'true'); // Remember that popup was shown
+    }
+
+    // Submit popup form
+    function submitPopupForm(event) {
+      event.preventDefault();
+      const name = event.target.querySelector('input[type="text"]').value;
+      const email = event.target.querySelector('input[type="email"]').value;
+      // Here you would typically send the name and email to your backend
+      alert(`Thank you ${name} for joining the movement! We'll keep you updated.`);
+      closePopup();
+    }
+
+    // Close popup when clicking outside
+    document.getElementById('signupPopup').addEventListener('click', function(event) {
+      if (event.target === this) {
+        closePopup();
+      }
+    });
+
+    // Check if popup was already shown (optional - removes popup on subsequent visits)
+    if (localStorage.getItem('popupShown') === 'true') {
+      // Uncomment the line below if you want the popup to only show once per user
+      // document.getElementById('signupPopup').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
